@@ -45,10 +45,19 @@ for filename in filenames:
     t_trim = np.array(t[keep])
     theta_trim = theta[keep]
 
+    plt.figure()
+    plt.plot(t, theta)
+
+    point1 = [t[0], theta0]
+    point2 = [t[-1:], theta0]
     
-    # plt.plot(t, theta, '-o')
-    plt.plot(t_trim - t_trim[0], theta_trim)
-    plt.legend(legend_names)
+    xvalues = [point1[0], point2[0]]
+    yvalues = [point1[1], point2[1]]
+
+    plt.plot(xvalues, yvalues)
+    # plt.plot(t_trim - t_trim[0], theta_trim)
+    
+    plt.title(filename)
     plt.xlabel('Time (shifted) [s]')
     plt.ylabel(r'$\theta   [deg]$')
     t_collapse = t_trim[-1] - t_trim[0]
